@@ -3,12 +3,19 @@ import { WorldMapMetadata } from "./metadata/world-map-metdata";
 import { EmptyTile } from "./tiles/empty-tile";
 
 export class WorldMap extends WorldMapMetadata {
-  constructor(width: u16, height: u16, atlasId: u8) {
+  constructor(
+    width: u16,
+    height: u16,
+    atlasId: u8,
+    mapTiles: Array<Array<MapTileMetadata>> = new Array<Array<MapTileMetadata>>(
+      0,
+    ),
+  ) {
     super();
     this.width = width;
     this.height = height;
     this.atlasId = atlasId;
-    this.mapTiles = new Array<Array<MapTileMetadata>>(width * height);
+    this.mapTiles = mapTiles;
   }
 
   initializeEmptyMap(): void {

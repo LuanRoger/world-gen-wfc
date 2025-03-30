@@ -1,6 +1,9 @@
 import { GenerationStep } from "../constants/generation-step";
 import { WfcCallKind } from "../constants/wfc-call-kind";
+import { MapTileMetadata } from "../models/metadata/map-tile-metadata";
 import { TileSocket } from "../models/tile-socket";
+import { MapTile } from "../models/tiles/map-tile";
+import { WorldMap } from "../models/world-map";
 import { BoundresCheckResult } from "./boundries-check-result";
 import { TileAtlas } from "./tile-atlas";
 import { WaveMap } from "./wave-map";
@@ -11,6 +14,7 @@ import { WavePossitionPoint } from "./wave-possition-point";
 export class WorldGeneration {
   private width: u16;
   private height: u16;
+  private atlasId: u8;
   private seed: u32;
   private waveMap: WaveMap;
   private updateMapInstance: boolean = true;
@@ -28,11 +32,36 @@ export class WorldGeneration {
     this.height = height;
     this.seed = seed;
     this.waveMap = new WaveMap(width, height, tileAtlas);
+    this.atlasId = tileAtlas.id;
     this.updateMapInstance = updateMapInstance;
   }
 
   get isAllCollapsed(): boolean {
     return this.waveMap.isAllCollapsed;
+  }
+
+  getWorldMap(): WorldMap {
+    const mapTiles: Array<Array<MapTileMetadata>> = new Array<
+      Array<MapTileMetadata>
+    >(this.width * this.height);
+
+    for (let x: u16 = 0; x < this.width; x++) {
+      mapTiles[x] = new Array<MapTileMetadata>(this.height);
+      for (let y: u16 = 0; y < this.height; y++) {
+        const wavePossitonPoint: WavePossitionPoint = new WavePossitionPoint(
+          x,
+          y,
+        );
+        const wavePossition =
+          this.waveMap.getPossitionAtPoint(wavePossitonPoint);
+
+        const entropy: u8 = wavePossition.entropy[0];
+        const mapTile: MapTile = this.waveMap.getTileById(entropy);
+        mapTiles[x][y] = mapTile;
+      }
+    }
+
+    return new WorldMap(this.width, this.height, this.atlasId, mapTiles);
   }
 
   wfc(callKind: u8 = WfcCallKind.INTERATION): void {
@@ -53,7 +82,7 @@ export class WorldGeneration {
   }
 
   private complete(): void {
-    while (!this.isAllCollapsed && this.clean) {
+    while (!this.isAllCollapsed && !this.clean) {
       this.interate();
     }
   }

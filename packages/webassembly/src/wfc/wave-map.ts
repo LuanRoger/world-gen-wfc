@@ -73,8 +73,9 @@ export class WaveMap {
           wavePossition.collapsed() ||
           (!includeConflicts && wavePossition.conflict()) ||
           wavePossition.entropy.length >= smallerEntropyLength
-        )
+        ) {
           continue;
+        }
 
         smallerEntropyLength = wavePossition.entropy.length;
         smallerEntropyRow = row;
@@ -158,6 +159,10 @@ export class WaveMap {
 
   get isAllCollapsed(): boolean {
     return this.wave.isAllCollapsed();
+  }
+
+  getTileById(id: u8): MapTile {
+    return this.tileAtlas.getAtlasTileById(id);
   }
 
   getTileAtPossition(possitionPoint: WavePossitionPoint): MapTile {

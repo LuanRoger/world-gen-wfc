@@ -7,9 +7,10 @@ import { WorldMap } from "./models/world-map";
 import { WaveMap } from "./wfc/wave-map";
 import { WorldGeneration } from "./wfc/world-generation";
 
-export function interate(): u16 {
-  const generator = new WorldGeneration(16, 16, 0, new PlainAtlas());
+const generator = new WorldGeneration(10, 10, 0, new PlainAtlas());
+
+export function interate(): WorldMapMetadata {
   generator.wfc(WfcCallKind.INTERATION);
 
-  return 0;
+  return generator.getWorldMap();
 }

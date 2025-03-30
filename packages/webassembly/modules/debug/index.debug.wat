@@ -7,10 +7,10 @@
  (type $5 (func))
  (type $6 (func (param i32 i32 i32) (result i32)))
  (type $7 (func (param i32 i32 i32 i32) (result i32)))
- (type $8 (func (param i32 i32 i32 i32)))
- (type $9 (func (result i32)))
- (type $10 (func (result f64)))
- (type $11 (func (param i32 i32 i32 i32 i32) (result i32)))
+ (type $8 (func (param i32 i32 i32 i32 i32) (result i32)))
+ (type $9 (func (param i32 i32 i32 i32)))
+ (type $10 (func (result i32)))
+ (type $11 (func (result f64)))
  (type $12 (func (param i32 i32 i64) (result i32)))
  (type $13 (func (param i32 i64)))
  (type $14 (func (param i32) (result i64)))
@@ -72,10 +72,11 @@
  (global $~lib/math/random_state0_32 (mut i32) (i32.const 0))
  (global $~lib/math/random_state1_32 (mut i32) (i32.const 0))
  (global $~lib/math/random_seeded (mut i32) (i32.const 0))
- (global $~lib/rt/__rtti_base i32 (i32.const 864))
- (global $~lib/memory/__data_end i32 (i32.const 1000))
- (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33768))
- (global $~lib/memory/__heap_base i32 (i32.const 33768))
+ (global $src/index/generator (mut i32) (i32.const 0))
+ (global $~lib/rt/__rtti_base i32 (i32.const 992))
+ (global $~lib/memory/__data_end i32 (i32.const 1144))
+ (global $~lib/memory/__stack_pointer (mut i32) (i32.const 33912))
+ (global $~lib/memory/__heap_base i32 (i32.const 33912))
  (memory $0 1)
  (data $0 (i32.const 12) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00 \00\00\00~\00l\00i\00b\00/\00r\00t\00/\00i\00t\00c\00m\00s\00.\00t\00s\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data $1 (i32.const 80) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
@@ -95,10 +96,17 @@
  (data $15 (i32.const 764) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data $16 (i32.const 796) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
  (data $17 (i32.const 828) "\1c\00\00\00\00\00\00\00\00\00\00\00\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00")
- (data $18 (i32.const 864) "!\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00\00\00\00\00B\00\00\00\02\t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00 \00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\02A\00\00 \00\00\00 \00\00\00\00\00\00\00\00\00\00\00 \00\00\00")
+ (data $18 (i32.const 860) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00*\00\00\00O\00b\00j\00e\00c\00t\00 \00a\00l\00r\00e\00a\00d\00y\00 \00p\00i\00n\00n\00e\00d\00\00\00")
+ (data $19 (i32.const 924) "<\00\00\00\00\00\00\00\00\00\00\00\02\00\00\00(\00\00\00O\00b\00j\00e\00c\00t\00 \00i\00s\00 \00n\00o\00t\00 \00p\00i\00n\00n\00e\00d\00\00\00\00\00")
+ (data $20 (i32.const 992) "%\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00\00\00\00\00B\00\00\00\02\t\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00 \00\00\00\02A\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\02A\00\00\02A\00\00 \00\00\00\00\00\00\00\02A\00\00\02A\00\00 \00\00\00\00\00\00\00\00\00\00\00 \00\00\00\00\00\00\00")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 1))
  (export "interate" (func $src/index/interate))
+ (export "__new" (func $~lib/rt/itcms/__new))
+ (export "__pin" (func $~lib/rt/itcms/__pin))
+ (export "__unpin" (func $~lib/rt/itcms/__unpin))
+ (export "__collect" (func $~lib/rt/itcms/__collect))
+ (export "__rtti_base" (global $~lib/rt/__rtti_base))
  (export "memory" (memory $0))
  (start $~start)
  (func $~lib/rt/itcms/Object#get:nextWithColor (param $this i32) (result i32)
@@ -2563,9 +2571,6 @@
   call $src/models/atlas/plains-atlas/PlainAtlas#constructor
   global.set $src/models/atlas/plains-atlas/PlainAtlas.instance
  )
- (func $start:src/index
-  call $start:src/models/atlas/plains-atlas
- )
  (func $src/wfc/world-generation/WorldGeneration#set:width (param $this i32) (param $width i32)
   local.get $this
   local.get $width
@@ -2579,7 +2584,7 @@
  (func $src/wfc/world-generation/WorldGeneration#set:seed (param $this i32) (param $seed i32)
   local.get $this
   local.get $seed
-  i32.store offset=4
+  i32.store offset=8
  )
  (func $src/wfc/wave-map/WaveMap#set:width (param $this i32) (param $width i32)
   local.get $this
@@ -2822,30 +2827,39 @@
  (func $src/wfc/world-generation/WorldGeneration#set:waveMap (param $this i32) (param $waveMap i32)
   local.get $this
   local.get $waveMap
-  i32.store offset=8
+  i32.store offset=12
   local.get $this
   local.get $waveMap
   i32.const 0
   call $~lib/rt/itcms/__link
  )
+ (func $src/wfc/tile-atlas/TileAtlas#get:id (param $this i32) (result i32)
+  local.get $this
+  i32.load8_u
+ )
+ (func $src/wfc/world-generation/WorldGeneration#set:atlasId (param $this i32) (param $atlasId i32)
+  local.get $this
+  local.get $atlasId
+  i32.store8 offset=4
+ )
  (func $src/wfc/world-generation/WorldGeneration#set:updateMapInstance (param $this i32) (param $updateMapInstance i32)
   local.get $this
   local.get $updateMapInstance
-  i32.store8 offset=12
+  i32.store8 offset=16
  )
  (func $src/wfc/world-generation/WorldGeneration#set:generationStep (param $this i32) (param $generationStep i32)
   local.get $this
   local.get $generationStep
-  i32.store8 offset=13
+  i32.store8 offset=17
  )
  (func $src/wfc/world-generation/WorldGeneration#set:clean (param $this i32) (param $clean i32)
   local.get $this
   local.get $clean
-  i32.store8 offset=14
+  i32.store8 offset=18
  )
  (func $src/wfc/world-generation/WorldGeneration#get:waveMap (param $this i32) (result i32)
   local.get $this
-  i32.load offset=8
+  i32.load offset=12
  )
  (func $src/wfc/wave-map/WaveMap#get:height (param $this i32) (result i32)
   local.get $this
@@ -3160,7 +3174,7 @@
  )
  (func $src/wfc/world-generation/WorldGeneration#get:generationStep (param $this i32) (result i32)
   local.get $this
-  i32.load8_u offset=13
+  i32.load8_u offset=17
  )
  (func $src/models/metadata/map-tile-metadata/MapTileMetadata#get:isolationGroup (param $this i32) (result i32)
   local.get $this
@@ -3176,10 +3190,223 @@
  )
  (func $src/wfc/world-generation/WorldGeneration#get:clean (param $this i32) (result i32)
   local.get $this
-  i32.load8_u offset=14
+  i32.load8_u offset=18
+ )
+ (func $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:buffer (param $this i32) (param $buffer i32)
+  local.get $this
+  local.get $buffer
+  i32.store
+  local.get $this
+  local.get $buffer
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:dataStart (param $this i32) (param $dataStart i32)
+  local.get $this
+  local.get $dataStart
+  i32.store offset=4
+ )
+ (func $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:byteLength (param $this i32) (param $byteLength i32)
+  local.get $this
+  local.get $byteLength
+  i32.store offset=8
+ )
+ (func $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:length_ (param $this i32) (param $length_ i32)
+  local.get $this
+  local.get $length_
+  i32.store offset=12
+ )
+ (func $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:buffer (param $this i32) (param $buffer i32)
+  local.get $this
+  local.get $buffer
+  i32.store
+  local.get $this
+  local.get $buffer
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:dataStart (param $this i32) (param $dataStart i32)
+  local.get $this
+  local.get $dataStart
+  i32.store offset=4
+ )
+ (func $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:byteLength (param $this i32) (param $byteLength i32)
+  local.get $this
+  local.get $byteLength
+  i32.store offset=8
+ )
+ (func $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:length_ (param $this i32) (param $length_ i32)
+  local.get $this
+  local.get $length_
+  i32.store offset=12
+ )
+ (func $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#get:length_ (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=12
+ )
+ (func $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#get:dataStart (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=4
+ )
+ (func $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#get:length_ (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=12
+ )
+ (func $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#get:dataStart (param $this i32) (result i32)
+  local.get $this
+  i32.load offset=4
+ )
+ (func $src/models/metadata/world-map-metdata/WorldMapMetadata#set:width (param $this i32) (param $width i32)
+  local.get $this
+  local.get $width
+  i32.store16
+ )
+ (func $src/models/metadata/world-map-metdata/WorldMapMetadata#set:height (param $this i32) (param $height i32)
+  local.get $this
+  local.get $height
+  i32.store16 offset=2
+ )
+ (func $src/models/metadata/world-map-metdata/WorldMapMetadata#set:atlasId (param $this i32) (param $atlasId i32)
+  local.get $this
+  local.get $atlasId
+  i32.store8 offset=4
+ )
+ (func $src/models/metadata/world-map-metdata/WorldMapMetadata#set:mapTiles (param $this i32) (param $mapTiles i32)
+  local.get $this
+  local.get $mapTiles
+  i32.store offset=8
+  local.get $this
+  local.get $mapTiles
+  i32.const 0
+  call $~lib/rt/itcms/__link
+ )
+ (func $src/wfc/world-generation/WorldGeneration#get:atlasId (param $this i32) (result i32)
+  local.get $this
+  i32.load8_u offset=4
+ )
+ (func $~lib/rt/itcms/__pin (param $ptr i32) (result i32)
+  (local $obj i32)
+  local.get $ptr
+  if
+   local.get $ptr
+   i32.const 20
+   i32.sub
+   local.set $obj
+   local.get $obj
+   call $~lib/rt/itcms/Object#get:color
+   i32.const 3
+   i32.eq
+   if
+    i32.const 880
+    i32.const 32
+    i32.const 338
+    i32.const 7
+    call $~lib/builtins/abort
+    unreachable
+   end
+   local.get $obj
+   call $~lib/rt/itcms/Object#unlink
+   local.get $obj
+   global.get $~lib/rt/itcms/pinSpace
+   i32.const 3
+   call $~lib/rt/itcms/Object#linkTo
+  end
+  local.get $ptr
+  return
+ )
+ (func $~lib/rt/itcms/__unpin (param $ptr i32)
+  (local $obj i32)
+  local.get $ptr
+  i32.eqz
+  if
+   return
+  end
+  local.get $ptr
+  i32.const 20
+  i32.sub
+  local.set $obj
+  local.get $obj
+  call $~lib/rt/itcms/Object#get:color
+  i32.const 3
+  i32.ne
+  if
+   i32.const 944
+   i32.const 32
+   i32.const 352
+   i32.const 5
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/rt/itcms/state
+  i32.const 1
+  i32.eq
+  if
+   local.get $obj
+   call $~lib/rt/itcms/Object#makeGray
+  else
+   local.get $obj
+   call $~lib/rt/itcms/Object#unlink
+   local.get $obj
+   global.get $~lib/rt/itcms/fromSpace
+   global.get $~lib/rt/itcms/white
+   call $~lib/rt/itcms/Object#linkTo
+  end
+ )
+ (func $~lib/rt/itcms/__collect
+  i32.const 0
+  drop
+  global.get $~lib/rt/itcms/state
+  i32.const 0
+  i32.gt_s
+  if
+   loop $while-continue|0
+    global.get $~lib/rt/itcms/state
+    i32.const 0
+    i32.ne
+    if
+     call $~lib/rt/itcms/step
+     drop
+     br $while-continue|0
+    end
+   end
+  end
+  call $~lib/rt/itcms/step
+  drop
+  loop $while-continue|1
+   global.get $~lib/rt/itcms/state
+   i32.const 0
+   i32.ne
+   if
+    call $~lib/rt/itcms/step
+    drop
+    br $while-continue|1
+   end
+  end
+  global.get $~lib/rt/itcms/total
+  i64.extend_i32_u
+  i32.const 200
+  i64.extend_i32_u
+  i64.mul
+  i64.const 100
+  i64.div_u
+  i32.wrap_i64
+  i32.const 1024
+  i32.add
+  global.set $~lib/rt/itcms/threshold
+  i32.const 0
+  drop
+  i32.const 0
+  drop
  )
  (func $~lib/rt/__visit_globals (param $0 i32)
   (local $1 i32)
+  global.get $src/index/generator
+  local.tee $1
+  if
+   local.get $1
+   local.get $0
+   call $~lib/rt/itcms/__visit
+  end
   i32.const 128
   local.get $0
   call $~lib/rt/itcms/__visit
@@ -3190,6 +3417,12 @@
   local.get $0
   call $~lib/rt/itcms/__visit
   i32.const 240
+  local.get $0
+  call $~lib/rt/itcms/__visit
+  i32.const 880
+  local.get $0
+  call $~lib/rt/itcms/__visit
+  i32.const 944
   local.get $0
   call $~lib/rt/itcms/__visit
   global.get $src/models/atlas/plains-atlas/PlainAtlas.instance
@@ -3417,7 +3650,7 @@
   local.get $1
   call $~lib/object/Object~visit
   local.get $0
-  i32.load offset=8
+  i32.load offset=12
   local.tee $2
   if
    local.get $2
@@ -3507,6 +3740,44 @@
   local.get $1
   call $~lib/array/Array<~lib/array/Array<src/wfc/wave-possition/WavePossition>>#__visit
  )
+ (func $src/models/metadata/world-map-metdata/WorldMapMetadata~visit (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  local.get $0
+  local.get $1
+  call $~lib/object/Object~visit
+  local.get $0
+  i32.load offset=8
+  local.tee $2
+  if
+   local.get $2
+   local.get $1
+   call $~lib/rt/itcms/__visit
+  end
+ )
+ (func $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#get:buffer (param $this i32) (result i32)
+  local.get $this
+  i32.load
+ )
+ (func $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/object/Object~visit
+  local.get $0
+  local.get $1
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#__visit
+ )
+ (func $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#get:buffer (param $this i32) (result i32)
+  local.get $this
+  i32.load
+ )
+ (func $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $~lib/object/Object~visit
+  local.get $0
+  local.get $1
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#__visit
+ )
  (func $src/models/tiles/super-tile/SuperTile~visit (param $0 i32) (param $1 i32)
   (local $2 i32)
   local.get $0
@@ -3559,189 +3830,218 @@
    call $~lib/rt/itcms/__visit
   end
  )
+ (func $src/models/world-map/WorldMap~visit (param $0 i32) (param $1 i32)
+  local.get $0
+  local.get $1
+  call $src/models/metadata/world-map-metdata/WorldMapMetadata~visit
+ )
  (func $~lib/rt/__visit_members (param $0 i32) (param $1 i32)
   block $invalid
-   block $src/wfc/boundries-check-result/BoundresCheckResult
-    block $src/wfc/wave-possition-area/WavePossitionArea
-     block $src/models/tiles/super-tile/SuperTile
-      block $src/wfc/wave-possition-point/WavePossitionPoint
-       block $src/utils/random/Random
-        block $~lib/array/Array<~lib/array/Array<src/wfc/wave-possition/WavePossition>>
-         block $~lib/array/Array<src/wfc/wave-possition/WavePossition>
-          block $src/wfc/wave-possition/WavePossition
-           block $src/wfc/wave/Wave
-            block $src/wfc/wave-map/WaveMap
-             block $src/wfc/world-generation/WorldGeneration
-              block $src/models/tiles/empty-tile/EmptyTile
-               block $src/models/tiles/plains/dirt-tile/DirtTile
-                block $src/models/tiles/plains/sand-tile/SandTile
-                 block $src/models/tiles/plains/deep-river-tile/DeepRiverTile
-                  block $src/models/tiles/plains/river-tile/RiverTile
-                   block $src/models/tiles/plains/mountain-peek-tile/MountainPeekTile
-                    block $src/models/tiles/plains/mountain-tile/MountainTile
-                     block $src/models/tiles/plains/grass-tile/GrassTile
-                      block $~lib/array/Array<src/wfc/collapse-frequency/CollapseFrequency>
-                       block $src/wfc/collapse-frequency/CollapseFrequency
-                        block $~lib/array/Array<src/models/tiles/map-tile/MapTile>
-                         block $src/models/metadata/map-tile-metadata/MapTileMetadata
-                          block $src/models/tiles/map-tile/MapTile
-                           block $src/wfc/tile-atlas/TileAtlas
-                            block $src/models/atlas/plains-atlas/PlainAtlas
-                             block $~lib/array/Array<i32>
-                              block $~lib/array/Array<u8>
-                               block $src/models/tile-socket/TileSocket
-                                block $~lib/arraybuffer/ArrayBufferView
-                                 block $~lib/string/String
-                                  block $~lib/arraybuffer/ArrayBuffer
-                                   block $~lib/object/Object
+   block $src/models/world-map/WorldMap
+    block $src/wfc/boundries-check-result/BoundresCheckResult
+     block $src/wfc/wave-possition-area/WavePossitionArea
+      block $src/models/tiles/super-tile/SuperTile
+       block $src/wfc/wave-possition-point/WavePossitionPoint
+        block $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>
+         block $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>
+          block $src/models/metadata/world-map-metdata/WorldMapMetadata
+           block $src/utils/random/Random
+            block $~lib/array/Array<~lib/array/Array<src/wfc/wave-possition/WavePossition>>
+             block $~lib/array/Array<src/wfc/wave-possition/WavePossition>
+              block $src/wfc/wave-possition/WavePossition
+               block $src/wfc/wave/Wave
+                block $src/wfc/wave-map/WaveMap
+                 block $src/wfc/world-generation/WorldGeneration
+                  block $src/models/tiles/empty-tile/EmptyTile
+                   block $src/models/tiles/plains/dirt-tile/DirtTile
+                    block $src/models/tiles/plains/sand-tile/SandTile
+                     block $src/models/tiles/plains/deep-river-tile/DeepRiverTile
+                      block $src/models/tiles/plains/river-tile/RiverTile
+                       block $src/models/tiles/plains/mountain-peek-tile/MountainPeekTile
+                        block $src/models/tiles/plains/mountain-tile/MountainTile
+                         block $src/models/tiles/plains/grass-tile/GrassTile
+                          block $~lib/array/Array<src/wfc/collapse-frequency/CollapseFrequency>
+                           block $src/wfc/collapse-frequency/CollapseFrequency
+                            block $~lib/array/Array<src/models/tiles/map-tile/MapTile>
+                             block $src/models/metadata/map-tile-metadata/MapTileMetadata
+                              block $src/models/tiles/map-tile/MapTile
+                               block $src/wfc/tile-atlas/TileAtlas
+                                block $src/models/atlas/plains-atlas/PlainAtlas
+                                 block $~lib/array/Array<i32>
+                                  block $~lib/array/Array<u8>
+                                   block $src/models/tile-socket/TileSocket
+                                    block $~lib/arraybuffer/ArrayBufferView
+                                     block $~lib/string/String
+                                      block $~lib/arraybuffer/ArrayBuffer
+                                       block $~lib/object/Object
+                                        local.get $0
+                                        i32.const 8
+                                        i32.sub
+                                        i32.load
+                                        br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $src/models/tile-socket/TileSocket $~lib/array/Array<u8> $~lib/array/Array<i32> $src/models/atlas/plains-atlas/PlainAtlas $src/wfc/tile-atlas/TileAtlas $src/models/tiles/map-tile/MapTile $src/models/metadata/map-tile-metadata/MapTileMetadata $~lib/array/Array<src/models/tiles/map-tile/MapTile> $src/wfc/collapse-frequency/CollapseFrequency $~lib/array/Array<src/wfc/collapse-frequency/CollapseFrequency> $src/models/tiles/plains/grass-tile/GrassTile $src/models/tiles/plains/mountain-tile/MountainTile $src/models/tiles/plains/mountain-peek-tile/MountainPeekTile $src/models/tiles/plains/river-tile/RiverTile $src/models/tiles/plains/deep-river-tile/DeepRiverTile $src/models/tiles/plains/sand-tile/SandTile $src/models/tiles/plains/dirt-tile/DirtTile $src/models/tiles/empty-tile/EmptyTile $src/wfc/world-generation/WorldGeneration $src/wfc/wave-map/WaveMap $src/wfc/wave/Wave $src/wfc/wave-possition/WavePossition $~lib/array/Array<src/wfc/wave-possition/WavePossition> $~lib/array/Array<~lib/array/Array<src/wfc/wave-possition/WavePossition>> $src/utils/random/Random $src/models/metadata/world-map-metdata/WorldMapMetadata $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata> $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>> $src/wfc/wave-possition-point/WavePossitionPoint $src/models/tiles/super-tile/SuperTile $src/wfc/wave-possition-area/WavePossitionArea $src/wfc/boundries-check-result/BoundresCheckResult $src/models/world-map/WorldMap $invalid
+                                       end
+                                       return
+                                      end
+                                      return
+                                     end
+                                     return
+                                    end
                                     local.get $0
-                                    i32.const 8
-                                    i32.sub
-                                    i32.load
-                                    br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $~lib/arraybuffer/ArrayBufferView $src/models/tile-socket/TileSocket $~lib/array/Array<u8> $~lib/array/Array<i32> $src/models/atlas/plains-atlas/PlainAtlas $src/wfc/tile-atlas/TileAtlas $src/models/tiles/map-tile/MapTile $src/models/metadata/map-tile-metadata/MapTileMetadata $~lib/array/Array<src/models/tiles/map-tile/MapTile> $src/wfc/collapse-frequency/CollapseFrequency $~lib/array/Array<src/wfc/collapse-frequency/CollapseFrequency> $src/models/tiles/plains/grass-tile/GrassTile $src/models/tiles/plains/mountain-tile/MountainTile $src/models/tiles/plains/mountain-peek-tile/MountainPeekTile $src/models/tiles/plains/river-tile/RiverTile $src/models/tiles/plains/deep-river-tile/DeepRiverTile $src/models/tiles/plains/sand-tile/SandTile $src/models/tiles/plains/dirt-tile/DirtTile $src/models/tiles/empty-tile/EmptyTile $src/wfc/world-generation/WorldGeneration $src/wfc/wave-map/WaveMap $src/wfc/wave/Wave $src/wfc/wave-possition/WavePossition $~lib/array/Array<src/wfc/wave-possition/WavePossition> $~lib/array/Array<~lib/array/Array<src/wfc/wave-possition/WavePossition>> $src/utils/random/Random $src/wfc/wave-possition-point/WavePossitionPoint $src/models/tiles/super-tile/SuperTile $src/wfc/wave-possition-area/WavePossitionArea $src/wfc/boundries-check-result/BoundresCheckResult $invalid
+                                    local.get $1
+                                    call $~lib/arraybuffer/ArrayBufferView~visit
+                                    return
                                    end
+                                   local.get $0
+                                   local.get $1
+                                   call $src/models/tile-socket/TileSocket~visit
                                    return
                                   end
+                                  local.get $0
+                                  local.get $1
+                                  call $~lib/array/Array<u8>~visit
                                   return
                                  end
+                                 local.get $0
+                                 local.get $1
+                                 call $~lib/array/Array<i32>~visit
                                  return
                                 end
                                 local.get $0
                                 local.get $1
-                                call $~lib/arraybuffer/ArrayBufferView~visit
+                                call $src/models/atlas/plains-atlas/PlainAtlas~visit
                                 return
                                end
                                local.get $0
                                local.get $1
-                               call $src/models/tile-socket/TileSocket~visit
+                               call $src/wfc/tile-atlas/TileAtlas~visit
                                return
                               end
                               local.get $0
                               local.get $1
-                              call $~lib/array/Array<u8>~visit
+                              call $src/models/tiles/map-tile/MapTile~visit
                               return
                              end
                              local.get $0
                              local.get $1
-                             call $~lib/array/Array<i32>~visit
+                             call $src/models/metadata/map-tile-metadata/MapTileMetadata~visit
                              return
                             end
                             local.get $0
                             local.get $1
-                            call $src/models/atlas/plains-atlas/PlainAtlas~visit
+                            call $~lib/array/Array<src/models/tiles/map-tile/MapTile>~visit
                             return
                            end
-                           local.get $0
-                           local.get $1
-                           call $src/wfc/tile-atlas/TileAtlas~visit
                            return
                           end
                           local.get $0
                           local.get $1
-                          call $src/models/tiles/map-tile/MapTile~visit
+                          call $~lib/array/Array<src/wfc/collapse-frequency/CollapseFrequency>~visit
                           return
                          end
                          local.get $0
                          local.get $1
-                         call $src/models/metadata/map-tile-metadata/MapTileMetadata~visit
+                         call $src/models/tiles/plains/grass-tile/GrassTile~visit
                          return
                         end
                         local.get $0
                         local.get $1
-                        call $~lib/array/Array<src/models/tiles/map-tile/MapTile>~visit
+                        call $src/models/tiles/plains/mountain-tile/MountainTile~visit
                         return
                        end
+                       local.get $0
+                       local.get $1
+                       call $src/models/tiles/plains/mountain-peek-tile/MountainPeekTile~visit
                        return
                       end
                       local.get $0
                       local.get $1
-                      call $~lib/array/Array<src/wfc/collapse-frequency/CollapseFrequency>~visit
+                      call $src/models/tiles/plains/river-tile/RiverTile~visit
                       return
                      end
                      local.get $0
                      local.get $1
-                     call $src/models/tiles/plains/grass-tile/GrassTile~visit
+                     call $src/models/tiles/plains/deep-river-tile/DeepRiverTile~visit
                      return
                     end
                     local.get $0
                     local.get $1
-                    call $src/models/tiles/plains/mountain-tile/MountainTile~visit
+                    call $src/models/tiles/plains/sand-tile/SandTile~visit
                     return
                    end
                    local.get $0
                    local.get $1
-                   call $src/models/tiles/plains/mountain-peek-tile/MountainPeekTile~visit
+                   call $src/models/tiles/plains/dirt-tile/DirtTile~visit
                    return
                   end
                   local.get $0
                   local.get $1
-                  call $src/models/tiles/plains/river-tile/RiverTile~visit
+                  call $src/models/tiles/empty-tile/EmptyTile~visit
                   return
                  end
                  local.get $0
                  local.get $1
-                 call $src/models/tiles/plains/deep-river-tile/DeepRiverTile~visit
+                 call $src/wfc/world-generation/WorldGeneration~visit
                  return
                 end
                 local.get $0
                 local.get $1
-                call $src/models/tiles/plains/sand-tile/SandTile~visit
+                call $src/wfc/wave-map/WaveMap~visit
                 return
                end
                local.get $0
                local.get $1
-               call $src/models/tiles/plains/dirt-tile/DirtTile~visit
+               call $src/wfc/wave/Wave~visit
                return
               end
               local.get $0
               local.get $1
-              call $src/models/tiles/empty-tile/EmptyTile~visit
+              call $src/wfc/wave-possition/WavePossition~visit
               return
              end
              local.get $0
              local.get $1
-             call $src/wfc/world-generation/WorldGeneration~visit
+             call $~lib/array/Array<src/wfc/wave-possition/WavePossition>~visit
              return
             end
             local.get $0
             local.get $1
-            call $src/wfc/wave-map/WaveMap~visit
+            call $~lib/array/Array<~lib/array/Array<src/wfc/wave-possition/WavePossition>>~visit
             return
            end
-           local.get $0
-           local.get $1
-           call $src/wfc/wave/Wave~visit
            return
           end
           local.get $0
           local.get $1
-          call $src/wfc/wave-possition/WavePossition~visit
+          call $src/models/metadata/world-map-metdata/WorldMapMetadata~visit
           return
          end
          local.get $0
          local.get $1
-         call $~lib/array/Array<src/wfc/wave-possition/WavePossition>~visit
+         call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>~visit
          return
         end
         local.get $0
         local.get $1
-        call $~lib/array/Array<~lib/array/Array<src/wfc/wave-possition/WavePossition>>~visit
+        call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>~visit
         return
        end
        return
       end
+      local.get $0
+      local.get $1
+      call $src/models/tiles/super-tile/SuperTile~visit
       return
      end
      local.get $0
      local.get $1
-     call $src/models/tiles/super-tile/SuperTile~visit
+     call $src/wfc/wave-possition-area/WavePossitionArea~visit
      return
     end
-    local.get $0
-    local.get $1
-    call $src/wfc/wave-possition-area/WavePossitionArea~visit
     return
    end
+   local.get $0
+   local.get $1
+   call $src/models/world-map/WorldMap~visit
    return
   end
   unreachable
@@ -3754,8 +4054,8 @@
   global.get $~lib/memory/__data_end
   i32.lt_s
   if
-   i32.const 33792
-   i32.const 33840
+   i32.const 33936
+   i32.const 33984
    i32.const 1
    i32.const 1
    call $~lib/builtins/abort
@@ -6542,7 +6842,7 @@
   i32.eqz
   if
    global.get $~lib/memory/__stack_pointer
-   i32.const 15
+   i32.const 19
    i32.const 22
    call $~lib/rt/itcms/__new
    local.tee $this
@@ -6564,6 +6864,14 @@
   local.get $6
   i32.const 0
   call $src/wfc/world-generation/WorldGeneration#set:height
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $src/wfc/world-generation/WorldGeneration#set:atlasId
   local.get $this
   local.set $6
   global.get $~lib/memory/__stack_pointer
@@ -6656,6 +6964,20 @@
   local.get $6
   i32.store offset=4
   local.get $6
+  local.get $tileAtlas
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=8
+  local.get $6
+  call $src/wfc/tile-atlas/TileAtlas#get:id
+  call $src/wfc/world-generation/WorldGeneration#set:atlasId
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
   local.get $updateMapInstance
   call $src/wfc/world-generation/WorldGeneration#set:updateMapInstance
   local.get $this
@@ -6665,6 +6987,36 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $6
+ )
+ (func $start:src/index
+  (local $0 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  call $start:src/models/atlas/plains-atlas
+  i32.const 0
+  i32.const 10
+  i32.const 10
+  i32.const 0
+  i32.const 0
+  call $src/models/atlas/plains-atlas/PlainAtlas#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store
+  local.get $0
+  i32.const 1
+  call $src/wfc/world-generation/WorldGeneration#constructor
+  global.set $src/index/generator
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
  )
  (func $~lib/array/Array<src/wfc/wave-possition/WavePossition>#__get (param $this i32) (param $index i32) (result i32)
   (local $value i32)
@@ -6839,7 +7191,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 4
-   i32.const 29
+   i32.const 32
    call $~lib/rt/itcms/__new
    local.tee $this
    i32.store
@@ -7806,7 +8158,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 16
-   i32.const 30
+   i32.const 33
    call $~lib/rt/itcms/__new
    local.tee $this
    i32.store
@@ -8159,7 +8511,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 24
-   i32.const 31
+   i32.const 34
    call $~lib/rt/itcms/__new
    local.tee $this
    i32.store
@@ -8411,7 +8763,7 @@
   if
    global.get $~lib/memory/__stack_pointer
    i32.const 4
-   i32.const 32
+   i32.const 35
    call $~lib/rt/itcms/__new
    local.tee $this
    i32.store
@@ -11480,6 +11832,7 @@
     i32.store
     local.get $1
     call $src/wfc/world-generation/WorldGeneration#get:clean
+    i32.eqz
    else
     i32.const 0
    end
@@ -11586,9 +11939,357 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
  )
- (func $src/index/interate (result i32)
-  (local $generator i32)
-  (local $1 i32)
+ (func $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#constructor (param $this i32) (param $length i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $bufferSize i32)
+  (local $buffer i32)
+  (local $6 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 16
+   i32.const 31
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store
+  end
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:buffer
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:dataStart
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:byteLength
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:length_
+  local.get $length
+  i32.const 1073741820
+  i32.const 2
+  i32.shr_u
+  i32.gt_u
+  if
+   i32.const 608
+   i32.const 560
+   i32.const 70
+   i32.const 60
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $length
+  local.tee $2
+  i32.const 8
+  local.tee $3
+  local.get $2
+  local.get $3
+  i32.gt_u
+  select
+  i32.const 2
+  i32.shl
+  local.set $bufferSize
+  global.get $~lib/memory/__stack_pointer
+  local.get $bufferSize
+  i32.const 1
+  call $~lib/rt/itcms/__new
+  local.tee $buffer
+  i32.store offset=8
+  i32.const 2
+  global.get $~lib/shared/runtime/Runtime.Incremental
+  i32.ne
+  drop
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $buffer
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=12
+  local.get $6
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:buffer
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $buffer
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:dataStart
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $bufferSize
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:byteLength
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $length
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:length_
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $6
+ )
+ (func $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#constructor (param $this i32) (param $length i32) (result i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $bufferSize i32)
+  (local $buffer i32)
+  (local $6 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store offset=8
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 16
+   i32.const 30
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store
+  end
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:buffer
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:dataStart
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:byteLength
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  i32.const 0
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:length_
+  local.get $length
+  i32.const 1073741820
+  i32.const 2
+  i32.shr_u
+  i32.gt_u
+  if
+   i32.const 608
+   i32.const 560
+   i32.const 70
+   i32.const 60
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $length
+  local.tee $2
+  i32.const 8
+  local.tee $3
+  local.get $2
+  local.get $3
+  i32.gt_u
+  select
+  i32.const 2
+  i32.shl
+  local.set $bufferSize
+  global.get $~lib/memory/__stack_pointer
+  local.get $bufferSize
+  i32.const 1
+  call $~lib/rt/itcms/__new
+  local.tee $buffer
+  i32.store offset=8
+  i32.const 2
+  global.get $~lib/shared/runtime/Runtime.Incremental
+  i32.ne
+  drop
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $buffer
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=12
+  local.get $6
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:buffer
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $buffer
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:dataStart
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $bufferSize
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:byteLength
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  local.get $6
+  i32.store offset=4
+  local.get $6
+  local.get $length
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:length_
+  local.get $this
+  local.set $6
+  global.get $~lib/memory/__stack_pointer
+  i32.const 16
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $6
+ )
+ (func $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#__set (param $this i32) (param $index i32) (param $value i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $index
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#get:length_
+  i32.ge_u
+  if
+   local.get $index
+   i32.const 0
+   i32.lt_s
+   if
+    i32.const 128
+    i32.const 560
+    i32.const 130
+    i32.const 22
+    call $~lib/builtins/abort
+    unreachable
+   end
+   local.get $this
+   local.get $index
+   i32.const 1
+   i32.add
+   i32.const 2
+   i32.const 1
+   call $~lib/array/ensureCapacity
+   local.get $this
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store
+   local.get $3
+   local.get $index
+   i32.const 1
+   i32.add
+   call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#set:length_
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#get:dataStart
+  local.get $index
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $value
+  i32.store
+  i32.const 1
+  drop
+  local.get $this
+  local.get $value
+  i32.const 1
+  call $~lib/rt/itcms/__link
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $src/wfc/wave-map/WaveMap#getTileById (param $this i32) (param $id i32) (result i32)
+  (local $2 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 8
   i32.sub
@@ -11597,37 +12298,584 @@
   global.get $~lib/memory/__stack_pointer
   i64.const 0
   i64.store
+  local.get $this
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  i32.const 0
-  i32.const 16
-  i32.const 16
-  i32.const 0
-  i32.const 0
-  call $src/models/atlas/plains-atlas/PlainAtlas#constructor
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $1
-  i32.store
-  local.get $1
-  i32.const 1
-  call $src/wfc/world-generation/WorldGeneration#constructor
-  local.tee $generator
+  local.get $2
   i32.store offset=4
-  local.get $generator
-  local.set $1
+  local.get $2
+  call $src/wfc/wave-map/WaveMap#get:tileAtlas
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $1
+  local.get $2
   i32.store
-  local.get $1
-  global.get $src/constants/wfc-call-kind/WfcCallKind.INTERATION
-  call $src/wfc/world-generation/WorldGeneration#wfc
-  i32.const 0
-  local.set $1
+  local.get $2
+  local.get $id
+  call $src/wfc/tile-atlas/TileAtlas#getAtlasTileById
+  local.set $2
   global.get $~lib/memory/__stack_pointer
   i32.const 8
   i32.add
   global.set $~lib/memory/__stack_pointer
+  local.get $2
+  return
+ )
+ (func $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#__get (param $this i32) (param $index i32) (result i32)
+  (local $value i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  local.get $index
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#get:length_
+  i32.ge_u
+  if
+   i32.const 128
+   i32.const 560
+   i32.const 114
+   i32.const 42
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#get:dataStart
+  local.get $index
+  i32.const 2
+  i32.shl
+  i32.add
+  i32.load
+  local.tee $value
+  i32.store offset=4
+  i32.const 1
+  drop
+  i32.const 0
+  i32.eqz
+  drop
+  local.get $value
+  i32.eqz
+  if
+   i32.const 656
+   i32.const 560
+   i32.const 118
+   i32.const 40
+   call $~lib/builtins/abort
+   unreachable
+  end
+  local.get $value
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $3
+  return
+ )
+ (func $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#__set (param $this i32) (param $index i32) (param $value i32)
+  (local $3 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  local.get $index
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#get:length_
+  i32.ge_u
+  if
+   local.get $index
+   i32.const 0
+   i32.lt_s
+   if
+    i32.const 128
+    i32.const 560
+    i32.const 130
+    i32.const 22
+    call $~lib/builtins/abort
+    unreachable
+   end
+   local.get $this
+   local.get $index
+   i32.const 1
+   i32.add
+   i32.const 2
+   i32.const 1
+   call $~lib/array/ensureCapacity
+   local.get $this
+   local.set $3
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store
+   local.get $3
+   local.get $index
+   i32.const 1
+   i32.add
+   call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#set:length_
+  end
+  local.get $this
+  local.set $3
+  global.get $~lib/memory/__stack_pointer
+  local.get $3
+  i32.store
+  local.get $3
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#get:dataStart
+  local.get $index
+  i32.const 2
+  i32.shl
+  i32.add
+  local.get $value
+  i32.store
+  i32.const 1
+  drop
+  local.get $this
+  local.get $value
+  i32.const 1
+  call $~lib/rt/itcms/__link
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $src/models/metadata/world-map-metdata/WorldMapMetadata#constructor (param $this i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.const 29
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
   local.get $1
+  i32.store offset=4
+  local.get $1
+  call $~lib/object/Object#constructor
+  local.tee $this
+  i32.store
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  i32.const 0
+  call $src/models/metadata/world-map-metdata/WorldMapMetadata#set:width
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  i32.const 0
+  call $src/models/metadata/world-map-metdata/WorldMapMetadata#set:height
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  i32.const 0
+  call $src/models/metadata/world-map-metdata/WorldMapMetadata#set:atlasId
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=4
+  local.get $1
+  i32.const 0
+  i32.const 0
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#constructor
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  local.get $1
+  i32.store offset=8
+  local.get $1
+  call $src/models/metadata/world-map-metdata/WorldMapMetadata#set:mapTiles
+  local.get $this
+  local.set $1
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $1
+ )
+ (func $src/models/world-map/WorldMap#constructor (param $this i32) (param $width i32) (param $height i32) (param $atlasId i32) (param $mapTiles i32) (result i32)
+  (local $5 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i64.const 0
+  i64.store
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store offset=8
+  local.get $this
+  i32.eqz
+  if
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.const 36
+   call $~lib/rt/itcms/__new
+   local.tee $this
+   i32.store
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=4
+  local.get $5
+  call $src/models/metadata/world-map-metdata/WorldMapMetadata#constructor
+  local.tee $this
+  i32.store
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=4
+  local.get $5
+  local.get $width
+  call $src/models/metadata/world-map-metdata/WorldMapMetadata#set:width
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=4
+  local.get $5
+  local.get $height
+  call $src/models/metadata/world-map-metdata/WorldMapMetadata#set:height
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=4
+  local.get $5
+  local.get $atlasId
+  call $src/models/metadata/world-map-metdata/WorldMapMetadata#set:atlasId
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=4
+  local.get $5
+  local.get $mapTiles
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store offset=8
+  local.get $5
+  call $src/models/metadata/world-map-metdata/WorldMapMetadata#set:mapTiles
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $5
+ )
+ (func $src/wfc/world-generation/WorldGeneration#getWorldMap (param $this i32) (result i32)
+  (local $mapTiles i32)
+  (local $x i32)
+  (local $y i32)
+  (local $wavePossitonPoint i32)
+  (local $wavePossition i32)
+  (local $entropy i32)
+  (local $mapTile i32)
+  (local $8 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 28
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.const 28
+  memory.fill
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  local.get $this
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  call $src/wfc/world-generation/WorldGeneration#get:width
+  local.get $this
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  call $src/wfc/world-generation/WorldGeneration#get:height
+  i32.mul
+  i32.const 65535
+  i32.and
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#constructor
+  local.tee $mapTiles
+  i32.store offset=4
+  i32.const 0
+  local.set $x
+  loop $for-loop|0
+   local.get $x
+   local.get $this
+   local.set $8
+   global.get $~lib/memory/__stack_pointer
+   local.get $8
+   i32.store
+   local.get $8
+   call $src/wfc/world-generation/WorldGeneration#get:width
+   i32.const 65535
+   i32.and
+   i32.lt_u
+   if
+    local.get $mapTiles
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store
+    local.get $8
+    local.get $x
+    i32.const 0
+    local.get $this
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store offset=12
+    local.get $8
+    call $src/wfc/world-generation/WorldGeneration#get:height
+    i32.const 65535
+    i32.and
+    call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#constructor
+    local.set $8
+    global.get $~lib/memory/__stack_pointer
+    local.get $8
+    i32.store offset=8
+    local.get $8
+    call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#__set
+    i32.const 0
+    local.set $y
+    loop $for-loop|1
+     local.get $y
+     local.get $this
+     local.set $8
+     global.get $~lib/memory/__stack_pointer
+     local.get $8
+     i32.store
+     local.get $8
+     call $src/wfc/world-generation/WorldGeneration#get:height
+     i32.const 65535
+     i32.and
+     i32.lt_u
+     if
+      global.get $~lib/memory/__stack_pointer
+      i32.const 0
+      local.get $x
+      local.get $y
+      call $src/wfc/wave-possition-point/WavePossitionPoint#constructor
+      local.tee $wavePossitonPoint
+      i32.store offset=16
+      global.get $~lib/memory/__stack_pointer
+      local.get $this
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=12
+      local.get $8
+      call $src/wfc/world-generation/WorldGeneration#get:waveMap
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store
+      local.get $8
+      local.get $wavePossitonPoint
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=8
+      local.get $8
+      call $src/wfc/wave-map/WaveMap#getPossitionAtPoint
+      local.tee $wavePossition
+      i32.store offset=20
+      local.get $wavePossition
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=8
+      local.get $8
+      call $src/wfc/wave-possition/WavePossition#get:entropy
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store
+      local.get $8
+      i32.const 0
+      call $~lib/array/Array<u8>#__get
+      local.set $entropy
+      global.get $~lib/memory/__stack_pointer
+      local.get $this
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=8
+      local.get $8
+      call $src/wfc/world-generation/WorldGeneration#get:waveMap
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store
+      local.get $8
+      local.get $entropy
+      call $src/wfc/wave-map/WaveMap#getTileById
+      local.tee $mapTile
+      i32.store offset=24
+      local.get $mapTiles
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=12
+      local.get $8
+      local.get $x
+      call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#__get
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store
+      local.get $8
+      local.get $y
+      local.get $mapTile
+      local.set $8
+      global.get $~lib/memory/__stack_pointer
+      local.get $8
+      i32.store offset=8
+      local.get $8
+      call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#__set
+      local.get $y
+      i32.const 1
+      i32.add
+      local.set $y
+      br $for-loop|1
+     end
+    end
+    local.get $x
+    i32.const 1
+    i32.add
+    local.set $x
+    br $for-loop|0
+   end
+  end
+  i32.const 0
+  local.get $this
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store offset=8
+  local.get $8
+  call $src/wfc/world-generation/WorldGeneration#get:width
+  local.get $this
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store offset=8
+  local.get $8
+  call $src/wfc/world-generation/WorldGeneration#get:height
+  local.get $this
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store offset=8
+  local.get $8
+  call $src/wfc/world-generation/WorldGeneration#get:atlasId
+  local.get $mapTiles
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  local.get $8
+  i32.store
+  local.get $8
+  call $src/models/world-map/WorldMap#constructor
+  local.set $8
+  global.get $~lib/memory/__stack_pointer
+  i32.const 28
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $8
+  return
+ )
+ (func $src/index/interate (result i32)
+  (local $0 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  global.get $src/index/generator
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store
+  local.get $0
+  global.get $src/constants/wfc-call-kind/WfcCallKind.INTERATION
+  call $src/wfc/world-generation/WorldGeneration#wfc
+  global.get $src/index/generator
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store
+  local.get $0
+  call $src/wfc/world-generation/WorldGeneration#getWorldMap
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $0
   return
  )
  (func $~lib/array/Array<u8>#__visit (param $this i32) (param $cookie i32)
@@ -11955,6 +13203,146 @@
   i32.store
   local.get $5
   call $~lib/array/Array<~lib/array/Array<src/wfc/wave-possition/WavePossition>>#get:buffer
+  local.get $cookie
+  call $~lib/rt/itcms/__visit
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#__visit (param $this i32) (param $cookie i32)
+  (local $cur i32)
+  (local $end i32)
+  (local $val i32)
+  (local $5 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  i32.const 1
+  drop
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#get:dataStart
+  local.set $cur
+  local.get $cur
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#get:length_
+  i32.const 2
+  i32.shl
+  i32.add
+  local.set $end
+  loop $while-continue|0
+   local.get $cur
+   local.get $end
+   i32.lt_u
+   if
+    local.get $cur
+    i32.load
+    local.set $val
+    local.get $val
+    if
+     local.get $val
+     local.get $cookie
+     call $~lib/rt/itcms/__visit
+    end
+    local.get $cur
+    i32.const 4
+    i32.add
+    local.set $cur
+    br $while-continue|0
+   end
+  end
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>#get:buffer
+  local.get $cookie
+  call $~lib/rt/itcms/__visit
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#__visit (param $this i32) (param $cookie i32)
+  (local $cur i32)
+  (local $end i32)
+  (local $val i32)
+  (local $5 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  call $~stack_check
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store
+  i32.const 1
+  drop
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#get:dataStart
+  local.set $cur
+  local.get $cur
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#get:length_
+  i32.const 2
+  i32.shl
+  i32.add
+  local.set $end
+  loop $while-continue|0
+   local.get $cur
+   local.get $end
+   i32.lt_u
+   if
+    local.get $cur
+    i32.load
+    local.set $val
+    local.get $val
+    if
+     local.get $val
+     local.get $cookie
+     call $~lib/rt/itcms/__visit
+    end
+    local.get $cur
+    i32.const 4
+    i32.add
+    local.set $cur
+    br $while-continue|0
+   end
+  end
+  local.get $this
+  local.set $5
+  global.get $~lib/memory/__stack_pointer
+  local.get $5
+  i32.store
+  local.get $5
+  call $~lib/array/Array<~lib/array/Array<src/models/metadata/map-tile-metadata/MapTileMetadata>>#get:buffer
   local.get $cookie
   call $~lib/rt/itcms/__visit
   global.get $~lib/memory/__stack_pointer
