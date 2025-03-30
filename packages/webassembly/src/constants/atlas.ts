@@ -1,1 +1,3 @@
-export const PLAINS: u8 = 1;
+export class AtlasIDs {
+  static PLAINS: u8 = 1;
+}

@@ -4,12 +4,12 @@ import { CollapseFrequency } from "./collapse-frequency";
 export class TileAtlas {
   id: u8;
   mapTiles: MapTile[];
-  collapseFrequency?: CollapseFrequency[] | null;
+  collapseFrequency: CollapseFrequency[] | null;
 
   constructor(
     id: u8,
     mapTiles: MapTile[],
-    collapseFrequency?: CollapseFrequency[] | null,
+    collapseFrequency: CollapseFrequency[] | null = null,
   ) {
     this.id = id;
     this.mapTiles = mapTiles;

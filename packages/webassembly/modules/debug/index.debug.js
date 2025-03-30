@@ -19,10 +19,10 @@ async function instantiate(module, imports = {}) {
   const adaptedExports = Object.setPrototypeOf({
     getGrassTile() {
       // src/index/getGrassTile() => src/models/metadata/maptile/MapTileMetadata
-      return __liftRecord7(exports.getGrassTile() >>> 0);
+      return __liftRecord10(exports.getGrassTile() >>> 0);
     },
   }, exports);
-  function __liftRecord7(pointer) {
+  function __liftRecord10(pointer) {
     // src/models/metadata/maptile/MapTileMetadata
     // Hint: Opt-out from lifting as a record by providing an empty constructor
     if (!pointer) return null;

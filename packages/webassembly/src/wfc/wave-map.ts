@@ -1,6 +1,7 @@
 import { MapTile } from "../models/tiles/map-tile";
 import { SuperTile } from "../models/tiles/super-tile";
 import { Random } from "../utils/random";
+import { BoundresCheckResult } from "./boundries-check-result";
 import { CollapseFrequency } from "./collapse-frequency";
 import { TileAtlas } from "./tile-atlas";
 import { Wave } from "./wave";
@@ -28,27 +29,21 @@ export class WaveMap {
     this.tileAtlas = tileAtlas;
     this.rng = new Random();
 
-    const wavePossition: WavePossition[][] = this.initializeWave();
+    const wavePossition: WavePossition[][] = new Array<Array<WavePossition>>(
+      width,
+    );
+    for (let x: u16 = 0; x < width; x++) {
+      wavePossition[x] = [];
+      for (let y: u16 = 0; y < height; y++) {
+        wavePossition[x][y] = new WavePossition(tileAtlas.validInitialTiles());
+      }
+    }
+
     this.wave = new Wave(width, height, wavePossition);
   }
 
   getValidInitialTiles(): u8[] {
     return this.tileAtlas.validInitialTiles();
-  }
-
-  private initializeWave(): WavePossition[][] {
-    const wavePossition: WavePossition[][] = new Array<Array<WavePossition>>(
-      this.width,
-    );
-    for (let x: u16 = 0; x < this.width; x++) {
-      wavePossition[x] = [];
-      for (let y: u16 = 0; y < this.height; y++) {
-        wavePossition[x][y] = new WavePossition(
-          this.tileAtlas.validInitialTiles(),
-        );
-      }
-    }
-    return wavePossition;
   }
 
   getSmallerEntropyPossition(
@@ -204,34 +199,17 @@ export class WaveMap {
     return true;
   }
 
-  checkAreaOutOfBound(possitionArea: WavePossitionArea): {
-    top: boolean;
-    right: boolean;
-    bottom: boolean;
-    left: boolean;
-  } {
-    const result = {
-      top: false,
-      right: false,
-      bottom: false,
-      left: false,
-    };
-
-    result.top =
-      possitionArea.TopRaw < 0 || possitionArea.TopRaw >= this.height;
-    result.right =
-      possitionArea.RightRaw < 0 || possitionArea.RightRaw >= this.width;
-    result.bottom =
-      possitionArea.BottomRaw < 0 || possitionArea.BottomRaw >= this.height;
-    result.left =
-      possitionArea.LeftRaw < 0 || possitionArea.LeftRaw >= this.width;
-
-    return result;
+  checkAreaOutOfBound(possitionArea: WavePossitionArea): BoundresCheckResult {
+    return new BoundresCheckResult(
+      possitionArea.TopRaw < 0 || possitionArea.TopRaw >= this.height,
+      possitionArea.RightRaw < 0 || possitionArea.RightRaw >= this.width,
+      possitionArea.BottomRaw < 0 || possitionArea.BottomRaw >= this.height,
+      possitionArea.LeftRaw < 0 || possitionArea.LeftRaw >= this.width,
+    );
   }
 
   hasAnyOutOfBounds(possitionArea: WavePossitionArea): boolean {
-    const bounds = this.checkAreaOutOfBound(possitionArea);
-    return bounds.top || bounds.right || bounds.bottom || bounds.left;
+    return this.checkAreaOutOfBound(possitionArea).itHasAnyOutBounds();
   }
 
   getCountOfConflictTiles(): u16 {
