@@ -1,5 +1,8 @@
-// The entry file of your WebAssembly module.
+import { MapTileMetadata } from "./models/metadata/maptile";
+import { GrassTile } from "./models/tiles/plains";
 
-export function add(a: i32, b: i32): i32 {
-  return a + b;
+export function getGrassTile(): MapTileMetadata {
+  const grassTile = new GrassTile();
+
+  return grassTile;
 }
