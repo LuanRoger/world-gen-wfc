@@ -1,7 +1,7 @@
 /** Exported memory */
 export declare const memory: WebAssembly.Memory;
 /**
- * src/index/test
+ * src/index/interate
  * @returns `u16`
  */
-export declare function test(): number;
+export declare function interate(): number;

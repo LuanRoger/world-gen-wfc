@@ -64,9 +64,9 @@ export class WaveMap {
   ): WavePossitionPoint {
     let smallerEntropyRow: u16 = 0;
     let smallerEntropyCol: u16 = 0;
-    let smallerEntropyLength: u16 = Number.MAX_SAFE_INTEGER;
-    for (let row = 0; row < this.height; row++) {
-      for (let col = 0; col < this.width; col++) {
+    let smallerEntropyLength: i32 = 999;
+    for (let row: u16 = 0; row < this.height; row++) {
+      for (let col: u16 = 0; col < this.width; col++) {
         const wavePossition: WavePossition = this.wave.wavePossition[row][col];
 
         if (
@@ -100,11 +100,12 @@ export class WaveMap {
       tilePossition.column,
     );
     const tileAtPossition = this.getTileAtPossition(possitionPoint);
+    const isolationGroup: u8[] | null = tileAtPossition.isolationGroup;
 
     if (
       possition.conflict() ||
       !possition.collapsed() ||
-      tileAtPossition.isolationGroup == null
+      isolationGroup == null
     ) {
       return true;
     }
@@ -115,8 +116,7 @@ export class WaveMap {
     const onTopPossition = this.getPossitionAtPoint(possitionArea.Top);
     if (onTopPossition.collapsed()) {
       const topTileId = onTopPossition.entropy[0];
-      const isAllowedTopTile =
-        allowedSideTilesByIsolationRule.includes(topTileId);
+      const isAllowedTopTile = isolationGroup.includes(topTileId);
 
       if (isAllowedTopTile) {
         return true;
@@ -126,8 +126,7 @@ export class WaveMap {
     const onRightPossition = this.getPossitionAtPoint(possitionArea.Right);
     if (onRightPossition.collapsed()) {
       const rightTileId = onRightPossition.entropy[0];
-      const isAllowedRightTile =
-        allowedSideTilesByIsolationRule.includes(rightTileId);
+      const isAllowedRightTile = isolationGroup.includes(rightTileId);
 
       if (isAllowedRightTile) {
         return true;
@@ -137,8 +136,7 @@ export class WaveMap {
     const onBottomPossition = this.getPossitionAtPoint(possitionArea.Bottom);
     if (onBottomPossition.collapsed()) {
       const bottomTileId = onBottomPossition.entropy[0];
-      const isAllowedBottomTile =
-        allowedSideTilesByIsolationRule.includes(bottomTileId);
+      const isAllowedBottomTile = isolationGroup.includes(bottomTileId);
 
       if (isAllowedBottomTile) {
         return true;
@@ -148,8 +146,7 @@ export class WaveMap {
     const onLeftPossition = this.getPossitionAtPoint(possitionArea.Left);
     if (onLeftPossition.collapsed()) {
       const leftTileId = onLeftPossition.entropy[0];
-      const isAllowedLeftTile =
-        allowedSideTilesByIsolationRule.includes(leftTileId);
+      const isAllowedLeftTile = isolationGroup.includes(leftTileId);
 
       if (isAllowedLeftTile) {
         return true;
@@ -234,12 +231,14 @@ export class WaveMap {
 
   getRandomTileFromPossition(possition: WavePossitionPoint): u8 {
     const wavePossition = this.getPossitionAtPoint(possition);
+    const collapseFrequencies: CollapseFrequency[] | null =
+      this.tileAtlas.collapseFrequency;
 
-    if (this.tileAtlas.collapseFrequency) {
+    if (collapseFrequencies != null) {
       const filteredFrequencies: CollapseFrequency[] = [];
 
-      for (let i = 0; i < this.tileAtlas.collapseFrequency.length; i++) {
-        const frequency = this.tileAtlas.collapseFrequency[i];
+      for (let i = 0; i < collapseFrequencies.length; i++) {
+        const frequency = collapseFrequencies[i];
         for (let j = 0; j < wavePossition.entropy.length; j++) {
           if (frequency.tileId == wavePossition.entropy[j]) {
             filteredFrequencies.push(frequency);

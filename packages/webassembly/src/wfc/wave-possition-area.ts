@@ -38,14 +38,19 @@ export class WavePossitionArea {
   }
 
   constructor(possitionPoint: WavePossitionPoint) {
-    this.topRaw = possitionPoint.row - 1;
-    this.bottomRaw = possitionPoint.row + 1;
-    this.leftRaw = possitionPoint.column - 1;
-    this.rightRaw = possitionPoint.column + 1;
+    const topRaw: u16 = possitionPoint.row - 1;
+    const bottomRaw: u16 = possitionPoint.row + 1;
+    const leftRaw: u16 = possitionPoint.column - 1;
+    const rightRaw: u16 = possitionPoint.column + 1;
 
-    this.top = new WavePossitionPoint(this.topRaw, possitionPoint.column);
-    this.bottom = new WavePossitionPoint(this.bottomRaw, possitionPoint.column);
-    this.left = new WavePossitionPoint(possitionPoint.row, this.leftRaw);
-    this.right = new WavePossitionPoint(possitionPoint.row, this.rightRaw);
+    this.topRaw = topRaw;
+    this.bottomRaw = bottomRaw;
+    this.leftRaw = leftRaw;
+    this.rightRaw = rightRaw;
+
+    this.top = new WavePossitionPoint(topRaw, possitionPoint.column);
+    this.bottom = new WavePossitionPoint(bottomRaw, possitionPoint.column);
+    this.left = new WavePossitionPoint(possitionPoint.row, leftRaw);
+    this.right = new WavePossitionPoint(possitionPoint.row, rightRaw);
   }
 }

@@ -9,7 +9,7 @@ export class Random {
   }
 
   pickTileIdByFrequency(collapseFrequencies: CollapseFrequency[]): u8 {
-    let random: f32 = NativeMath.random();
+    let random: f64 = NativeMath.random();
 
     for (let i = 0; i < collapseFrequencies.length; i++) {
       const frequency = collapseFrequencies[i];
@@ -23,13 +23,13 @@ export class Random {
     return collapseFrequencies[0].tileId;
   }
 
-  generateRandomIndex(length: u16): u16 {
+  generateRandomIndex(length: i32): i32 {
     const min = 0;
     const max = length;
 
-    const random: f32 = NativeMath.random();
-    const randomIndex: f32 = random * (max - min);
+    const random: f64 = NativeMath.random();
+    const randomIndex: f64 = random * (max - min);
 
-    return NativeMath.floor(randomIndex);
+    return i32(NativeMath.floor(randomIndex));
   }
 }
