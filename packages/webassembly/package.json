@@ -7,10 +7,10 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "asbuild:debug": "asc src/index.ts --target debug",
+    "asbuild:debug": "asc src/index.ts --target debug --bindings",
     "asbuild:release": "asc src/index.ts --target release",
     "build": "asc src/index.ts --target release",
-    "dev": "onchange -v -i 'src/**/*.ts' -- npm run asbuild:debug",
+    "dev": "onchange -v -i \"src/**/*.ts\" -- npm run asbuild:debug",
     "asbuild": "npm run asbuild:debug && npm run asbuild:release",
     "test": "node tests"
   },
