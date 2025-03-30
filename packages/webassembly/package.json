@@ -1,0 +1,31 @@
+{
+  "name": "@repo/webassembly",
+  "version": "0.0.0",
+  "description": "AssemblyScript modules",
+  "license": "MIT",
+  "author": "LuanRoger",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "asbuild:debug": "asc src/index.ts --target debug",
+    "asbuild:release": "asc src/index.ts --target release",
+    "build": "asc src/index.ts --target release",
+    "dev": "onchange -v -i 'src/**/*.ts' -- npm run asbuild:debug",
+    "asbuild": "npm run asbuild:debug && npm run asbuild:release",
+    "test": "node tests"
+  },
+  "devDependencies": {
+    "assemblyscript": "^0.27.35",
+    "onchange": "^7.1.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./modules/release/index.release.js",
+      "types": "./modules/release/index.release.d.ts"
+    },
+    "./debug": {
+      "import": "./modules/debug/index.debug.js",
+      "types": "./modules/debug/index.debug.d.ts"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "targets": {
+    "debug": {
+      "outFile": "modules/debug/index.debug.wasm",
+      "textFile": "modules/debug/index.debug.wat",
+      "sourceMap": true,
+      "debug": true
+    },
+    "release": {
+      "outFile": "modules/release/index.release.wasm",
+      "textFile": "modules/release/index.release.wat",
+      "sourceMap": true,
+      "optimizeLevel": 3,
+      "shrinkLevel": 0,
+      "converge": false,
+      "noAssert": false
+    }
+  },
+  "options": {
+    "bindings": "esm"
+  }
+}
