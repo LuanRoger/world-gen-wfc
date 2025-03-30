@@ -6,6 +6,19 @@ export class TileSocket {
   private fitBottom: u8[];
   private fitLeft: u8[];
 
+  get FitTop(): u8[] {
+    return this.fitTop;
+  }
+  get FitRight(): u8[] {
+    return this.fitRight;
+  }
+  get FitBottom(): u8[] {
+    return this.fitBottom;
+  }
+  get FitLeft(): u8[] {
+    return this.fitLeft;
+  }
+
   constructor(fitTop: u8[], fitRight: u8[], fitBottom: u8[], fitLeft: u8[]) {
     this.fitTop = fitTop;
     this.fitRight = fitRight;
@@ -19,18 +32,5 @@ export class TileSocket {
     const bottom = fit.slice(0);
     const left = fit.slice(0);
     return new TileSocket(top, right, bottom, left);
-  }
-
-  getTop(): u8[] {
-    return this.fitTop;
-  }
-  getRight(): u8[] {
-    return this.fitRight;
-  }
-  getBottom(): u8[] {
-    return this.fitBottom;
-  }
-  getLeft(): u8[] {
-    return this.fitLeft;
   }
 }

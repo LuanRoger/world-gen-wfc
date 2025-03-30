@@ -61,7 +61,7 @@ export class WaveMap {
 
   getSmallerEntropyPossition(
     includeConflicts: boolean = false,
-  ): WavePossitionPoint | null {
+  ): WavePossitionPoint {
     let smallerEntropyRow: u16 = 0;
     let smallerEntropyCol: u16 = 0;
     let smallerEntropyLength: u16 = Number.MAX_SAFE_INTEGER;
@@ -93,12 +93,13 @@ export class WaveMap {
     this.wave.updateEntropyAt(possition, entropy);
   }
 
-  isTileIsolation(tilePossition: WavePossitionPoint): boolean {
+  isTileIsolated(tilePossition: WavePossitionPoint): boolean {
     const possition = this.getPossitionAtPoint(tilePossition);
-    const tileAtPossition = this.getTileAtPossition(
+    const possitionPoint: WavePossitionPoint = new WavePossitionPoint(
       tilePossition.row,
       tilePossition.column,
     );
+    const tileAtPossition = this.getTileAtPossition(possitionPoint);
 
     if (
       possition.conflict() ||
@@ -111,57 +112,49 @@ export class WaveMap {
     const possitionArea = new WavePossitionArea(tilePossition);
     const allowedSideTilesByIsolationRule = tileAtPossition.isolationGroup;
 
-    try {
-      const onTopPossition = this.getPossitionAtPoint(possitionArea.Top);
-      if (onTopPossition.collapsed()) {
-        const topTileId = onTopPossition.entropy[0];
-        const isAllowedTopTile =
-          allowedSideTilesByIsolationRule.includes(topTileId);
+    const onTopPossition = this.getPossitionAtPoint(possitionArea.Top);
+    if (onTopPossition.collapsed()) {
+      const topTileId = onTopPossition.entropy[0];
+      const isAllowedTopTile =
+        allowedSideTilesByIsolationRule.includes(topTileId);
 
-        if (isAllowedTopTile) {
-          return true;
-        }
+      if (isAllowedTopTile) {
+        return true;
       }
-    } catch (error) {}
+    }
 
-    try {
-      const onRightPossition = this.getPossitionAtPoint(possitionArea.Right);
-      if (onRightPossition.collapsed()) {
-        const rightTileId = onRightPossition.entropy[0];
-        const isAllowedRightTile =
-          allowedSideTilesByIsolationRule.includes(rightTileId);
+    const onRightPossition = this.getPossitionAtPoint(possitionArea.Right);
+    if (onRightPossition.collapsed()) {
+      const rightTileId = onRightPossition.entropy[0];
+      const isAllowedRightTile =
+        allowedSideTilesByIsolationRule.includes(rightTileId);
 
-        if (isAllowedRightTile) {
-          return true;
-        }
+      if (isAllowedRightTile) {
+        return true;
       }
-    } catch (error) {}
+    }
 
-    try {
-      const onBottomPossition = this.getPossitionAtPoint(possitionArea.Bottom);
-      if (onBottomPossition.collapsed()) {
-        const bottomTileId = onBottomPossition.entropy[0];
-        const isAllowedBottomTile =
-          allowedSideTilesByIsolationRule.includes(bottomTileId);
+    const onBottomPossition = this.getPossitionAtPoint(possitionArea.Bottom);
+    if (onBottomPossition.collapsed()) {
+      const bottomTileId = onBottomPossition.entropy[0];
+      const isAllowedBottomTile =
+        allowedSideTilesByIsolationRule.includes(bottomTileId);
 
-        if (isAllowedBottomTile) {
-          return true;
-        }
+      if (isAllowedBottomTile) {
+        return true;
       }
-    } catch (error) {}
+    }
 
-    try {
-      const onLeftPossition = this.getPossitionAtPoint(possitionArea.Left);
-      if (onLeftPossition.collapsed()) {
-        const leftTileId = onLeftPossition.entropy[0];
-        const isAllowedLeftTile =
-          allowedSideTilesByIsolationRule.includes(leftTileId);
+    const onLeftPossition = this.getPossitionAtPoint(possitionArea.Left);
+    if (onLeftPossition.collapsed()) {
+      const leftTileId = onLeftPossition.entropy[0];
+      const isAllowedLeftTile =
+        allowedSideTilesByIsolationRule.includes(leftTileId);
 
-        if (isAllowedLeftTile) {
-          return true;
-        }
+      if (isAllowedLeftTile) {
+        return true;
       }
-    } catch (error) {}
+    }
 
     return false;
   }
@@ -170,8 +163,9 @@ export class WaveMap {
     return this.wave.isAllCollapsed();
   }
 
-  getTileAtPossition(row: u16, column: u16): MapTile {
-    const possition: WavePossition = this.wave.wavePossition[row][column];
+  getTileAtPossition(possitionPoint: WavePossitionPoint): MapTile {
+    const possition: WavePossition =
+      this.wave.wavePossition[possitionPoint.row][possitionPoint.column];
     if (possition.conflict() || !possition.collapsed()) {
       return new SuperTile(possition.entropy);
     }
