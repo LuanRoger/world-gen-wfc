@@ -29,21 +29,34 @@ export class WaveMap {
     this.tileAtlas = tileAtlas;
     this.rng = new Random();
 
-    const wavePossition: WavePossition[][] = new Array<Array<WavePossition>>(
+    const wavePossition: WavePossition[][] = WaveMap.initializeWave(
       width,
+      height,
+      tileAtlas.validInitialTiles(),
     );
-    for (let x: u16 = 0; x < width; x++) {
-      wavePossition[x] = [];
-      for (let y: u16 = 0; y < height; y++) {
-        wavePossition[x][y] = new WavePossition(tileAtlas.validInitialTiles());
-      }
-    }
-
     this.wave = new Wave(width, height, wavePossition);
   }
 
   getValidInitialTiles(): u8[] {
     return this.tileAtlas.validInitialTiles();
+  }
+
+  static initializeWave(
+    width: u16,
+    height: u16,
+    vaidTiles: u8[],
+  ): WavePossition[][] {
+    const wavePossition: WavePossition[][] = new Array<Array<WavePossition>>(
+      width,
+    );
+
+    for (let x: u16 = 0; x < width; x++) {
+      wavePossition[x] = [];
+      for (let y: u16 = 0; y < height; y++) {
+        wavePossition[x][y] = new WavePossition(vaidTiles);
+      }
+    }
+    return wavePossition;
   }
 
   getSmallerEntropyPossition(

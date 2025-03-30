@@ -1,4 +1,4 @@
-import { MapTileMetadata } from "../metadata/maptile";
+import { MapTileMetadata } from "../metadata/map-tile-metadata";
 import { TileSocket } from "../tile-socket";
 
 export class MapTile extends MapTileMetadata {
