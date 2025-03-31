@@ -1,3 +1,5 @@
+import { copyArray } from "../utils/array";
+
 export class TileSocket {
   static EMPTY: TileSocket = new TileSocket([], [], [], []);
 
@@ -27,10 +29,18 @@ export class TileSocket {
   }
 
   static fromGroup(fit: u8[]): TileSocket {
-    const top = fit.slice(0);
-    const right = fit.slice(0);
-    const bottom = fit.slice(0);
-    const left = fit.slice(0);
+    const length = fit.length;
+
+    const top = new Array<u8>(length);
+    const right = new Array<u8>(length);
+    const bottom = new Array<u8>(length);
+    const left = new Array<u8>(length);
+
+    copyArray<u8>(fit, top);
+    copyArray<u8>(fit, right);
+    copyArray<u8>(fit, bottom);
+    copyArray<u8>(fit, left);
+
     return new TileSocket(top, right, bottom, left);
   }
 }

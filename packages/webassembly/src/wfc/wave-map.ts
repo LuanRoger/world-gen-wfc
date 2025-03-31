@@ -23,11 +23,11 @@ export class WaveMap {
     return this.height;
   }
 
-  constructor(width: u16, height: u16, tileAtlas: TileAtlas) {
+  constructor(width: u16, height: u16, tileAtlas: TileAtlas, seed: i64 = 0) {
     this.width = width;
     this.height = height;
     this.tileAtlas = tileAtlas;
-    this.rng = new Random();
+    this.rng = new Random(seed);
 
     const wavePossition: WavePossition[][] = WaveMap.initializeWave(
       width,

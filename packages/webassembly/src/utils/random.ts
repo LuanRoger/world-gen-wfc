@@ -3,7 +3,7 @@ import { CollapseFrequency } from "../wfc/collapse-frequency";
 export class Random {
   private seed: i64;
 
-  constructor(seed: i64 = 0) {
+  constructor(seed: i64) {
     this.seed = seed;
     NativeMath.seedRandom(this.seed);
   }

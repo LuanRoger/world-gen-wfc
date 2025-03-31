@@ -15,7 +15,7 @@ export class WorldGeneration {
   private width: u16;
   private height: u16;
   private atlasId: u8;
-  private seed: u32;
+  private seed: i64;
   private waveMap: WaveMap;
   private updateMapInstance: boolean = true;
   private generationStep: u8 = GenerationStep.IDLE;
@@ -24,14 +24,14 @@ export class WorldGeneration {
   constructor(
     width: u16,
     height: u16,
-    seed: u32,
+    seed: i64,
     tileAtlas: TileAtlas,
     updateMapInstance: boolean = true,
   ) {
     this.width = width;
     this.height = height;
     this.seed = seed;
-    this.waveMap = new WaveMap(width, height, tileAtlas);
+    this.waveMap = new WaveMap(width, height, tileAtlas, seed);
     this.atlasId = tileAtlas.id;
     this.updateMapInstance = updateMapInstance;
   }
@@ -167,6 +167,9 @@ export class WorldGeneration {
           const newEntropyBottom: u8[] = this.intersectArrays(
             wavePossitionBottom.entropy,
             socketTileMap.FitBottom,
+          );
+          console.log(
+            `newEntropyBottom: ${newEntropyBottom} - socketTileMap.FitBottom: ${socketTileMap.FitBottom}`,
           );
           this.waveMap.updateEntropyAt(possitionArea.Bottom, newEntropyBottom);
         }

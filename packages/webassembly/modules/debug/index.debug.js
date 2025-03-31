@@ -19,6 +19,11 @@ async function instantiate(module, imports = {}) {
           return Date.now() * Math.random();
         })();
       },
+      "console.log"(text) {
+        // ~lib/bindings/dom/console.log(~lib/string/String) => void
+        text = __liftString(text >>> 0);
+        console.log(text);
+      },
     }),
   };
   const { exports } = await WebAssembly.instantiate(module, adaptedImports);
